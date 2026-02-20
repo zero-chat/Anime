@@ -84,6 +84,7 @@
             color: #ddd;
             transition: 0.2s;
             cursor: pointer;
+            text-decoration: none;
         }
         .menu-item i {
             width: 24px;
@@ -105,6 +106,7 @@
             padding: 12px 20px;
             border-radius: 30px;
             cursor: pointer;
+            text-decoration: none;
         }
         .logout-btn:hover {
             background: #ff6b6b22;
@@ -406,13 +408,12 @@
             }
         }
     </style>
+</head>
 <script async custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
 </script>
-    
-</head>
 <body>
-    <amp-auto-ads type="adsense"
+<amp-auto-ads type="adsense"
         data-ad-client="ca-pub-2248811225701494">
 </amp-auto-ads>
     <div class="app-wrapper">
@@ -428,17 +429,16 @@
                 </div>
             </div>
             <div class="sidebar-menu">
-                <div class="menu-item active" onclick="https://homeanime.vercel.app">
+                <!-- Menu Home -->
+                <a class="menu-item active" href="https://homeanime.vercel.app/" target="_blank">
                     <i class="fas fa-home"></i> Home
-                </div>
-                <div class="menu-item" onclick="navigateTo('schedule'); setActiveMenu(this)">
-                    <i class="fas fa-calendar-alt"></i> Jadwal
-                </div>
-                <div class="menu-item" onclick="navigateTo('genres'); setActiveMenu(this)">
-                    <i class="fas fa-tags"></i> Genre
-                </div>
-                
-            </div>
+                </a>
+                <a class="menu-item" href="https://chat.whatsapp.com/EfhuCZyf5p8HTjJIAKxqKk?mode=gi_t" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Grup WhatsApp
+                </a>
+                <a class="menu-item" href="https://whatsapp.com/channel/0029VbCKE5n4SpkPdE1Y3K3X" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Saluran WhatsApp
+                </a>
             </div>
         </div>
 
@@ -469,16 +469,20 @@
             <!-- Bottom Navigation untuk mobile -->
             <div class="bottom-nav">
                 <div class="bottom-nav-item active" onclick="navigateTo('home'); setActiveBottom(this)">
-                                    <!-- Menu Home dengan link ke Google (bisa diganti) -->
-                <a class="menu-item active" href="https://homeanime.vercel.app/" target="_blank">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a class="menu-item" href="https://chat.whatsapp.com/EfhuCZyf5p8HTjJIAKxqKk?mode=gi_t" target="_blank">
-                    <i class="fab fa-whatsapp IP"></i> Grup WhatsApp
-                </a>
-                <a class="menu-item" href="https://whatsapp.com/channel/0029VbCKE5n4SpkPdE1Y3K3X" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Saluran WhatsApp
-                </a>
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="bottom-nav-item" onclick="navigateTo('schedule'); setActiveBottom(this)">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Jadwal</span>
+                </div>
+                <div class="bottom-nav-item" onclick="navigateTo('genres'); setActiveBottom(this)">
+                    <i class="fas fa-tags"></i>
+                    <span>Genre</span>
+                </div>
+                <div class="bottom-nav-item" onclick="navigateTo('history'); setActiveBottom(this)">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
                 </div>
             </div>
         </div>
@@ -560,7 +564,7 @@
             document.querySelectorAll('.bottom-nav-item').forEach(item => item.classList.remove('active'));
             
             if (page === 'home') {
-                document.querySelector('.menu-item[onclick*="home"]')?.classList.add('active');
+                document.querySelector('.menu-item[href*="home"]')?.classList.add('active');
                 document.querySelectorAll('.bottom-nav-item')[0]?.classList.add('active');
                 renderHome();
             } else if (page === 'search') {
@@ -570,17 +574,17 @@
             } else if (page === 'episode') {
                 renderEpisode(params.episodeSlug, params.animeSlug);
             } else if (page === 'genres') {
-                document.querySelector('.menu-item[onclick*="genres"]')?.classList.add('active');
+                document.querySelector('.menu-item[href*="genre"]')?.classList.add('active');
                 document.querySelectorAll('.bottom-nav-item')[2]?.classList.add('active');
                 renderGenreList();
             } else if (page === 'genre') {
                 renderGenreDetail(params.genreSlug, params.genreName);
             } else if (page === 'schedule') {
-                document.querySelector('.menu-item[onclick*="schedule"]')?.classList.add('active');
+                document.querySelector('.menu-item[href*="schedule"]')?.classList.add('active');
                 document.querySelectorAll('.bottom-nav-item')[1]?.classList.add('active');
                 renderSchedule();
             } else if (page === 'history') {
-                document.querySelector('.menu-item[onclick*="history"]')?.classList.add('active');
+                document.querySelector('.menu-item[href*="history"]')?.classList.add('active');
                 document.querySelectorAll('.bottom-nav-item')[3]?.classList.add('active');
                 renderHistory();
             }
@@ -895,9 +899,10 @@
         // Inisialisasi
         loadHistory();
     </script>
+    
+</script>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2248811225701494"
      crossorigin="anonymous"></script>
-    
 </body>
 </html>
